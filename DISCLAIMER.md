@@ -10,7 +10,7 @@ Use this software at your own risk.
 
 The author and contributors are not responsible for loss of audio functionality, hardware or software damage, data loss, system instability, or incompatibilities caused by kernel, firmware, distribution, ALSA, PipeWire, or other updates.
 
-The workaround changes the runtime state of the audio codec. It does not intentionally write firmware or permanently modify the hardware, but users should understand that these are low-level codec commands.
+The workaround changes the runtime state of the audio codec. The installer backs up the pre-install codec dump and relevant Node 0x17 values under `/var/lib/razer-audio-fix/` and the uninstaller attempts to restore those values. It does not intentionally write firmware or permanently modify the hardware, but users should understand that these are low-level codec commands.
 
 If this workaround does not work on your hardware, do not assume that the same HDA verbs are appropriate for it.
 

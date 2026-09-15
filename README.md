@@ -125,13 +125,29 @@ cat /proc/asound/cards
 
 If it does not work, open an issue and include the output above plus the codec information. Remove unrelated personal information.
 
-## Uninstall
+## Backup and uninstall
+
+The installer creates a one-time backup of the ALC298 codec state **before the workaround is enabled**:
+
+```text
+/var/lib/razer-audio-fix/
+├── codec-before-install.txt
+└── state-before-install.txt
+```
+
+The backup is deliberately not overwritten when `install.sh` is run again. This preserves the original pre-install state.
+
+When uninstalling:
 
 ```bash
 sudo ./uninstall.sh
 ```
 
-This removes the systemd service and script. It does not change firmware, kernel configuration, PipeWire configuration, or ALSA configuration.
+the service is disabled and the saved Node 0x17 values are restored to the currently detected ALC298 codec.
+
+The backup is retained after uninstall so it can be inspected or used for manual recovery.
+
+The workaround does not change firmware, kernel configuration, PipeWire configuration, or persistent ALSA configuration.
 
 ## Disclaimer
 
