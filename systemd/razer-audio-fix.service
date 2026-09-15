@@ -1,0 +1,12 @@
+[Unit]
+Description=Razer Blade 14 RZ09-0508 ALC298 speaker fix
+After=sound.target
+Wants=sound.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/razer-audio-fix.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
